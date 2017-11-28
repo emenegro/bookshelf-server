@@ -41,8 +41,8 @@ function mapObject(json) {
     const mapping = {
         "title": "title",
         "authors[]": "authors",
-        "publiser": "publisher",
-        "publishDate": "publishDate",
+        "publisher": "publisher",
+        "publishedDate": "publishedDate",
         "description": "description",
         "pageCount": "pageCount",
         "imageLinks.thumbnail": "coverImageUrl"

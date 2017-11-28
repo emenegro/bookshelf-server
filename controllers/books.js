@@ -28,6 +28,7 @@ module.exports.create = (req, res) => {
 		if (err) {
 			res.send(err);
 		} else {
+			res.statusCode = 201;
 			res.json(book);
 		}
 	});
