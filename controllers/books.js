@@ -3,7 +3,7 @@ var db = require('mongoose');
 var Book = db.model('Book');
 
 module.exports.list = (req, res) => {
-	Book.find(function (err, books) {
+	Book.find({ uuid: req.headers.uuid }, function (err, books) {
 		if (err) {
 			res.send(err);
 		} else {
@@ -13,7 +13,7 @@ module.exports.list = (req, res) => {
 };
 
 module.exports.find = (req, res) => {
-	Book.findById(req.params.id, function (err, book) {
+	Book.findById({ uuid: req.headers.uuid, _id: req.params.id }, function (err, book) {
 		if (err) {
 			res.send(err);
 		} else {
@@ -23,7 +23,9 @@ module.exports.find = (req, res) => {
 };
 
 module.exports.create = (req, res) => {
-	var newBook = new Book(req.body);
+	var body = req.body;
+	body['uuid'] = req.headers.uuid;
+	var newBook = new Book(body);
 	newBook.save(function (err, book) {
 		if (err) {
 			res.send(err);
@@ -35,7 +37,7 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-	Book.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function (err, book) {
+	Book.findOneAndUpdate({ uuid: req.headers.uuid, _id: req.params.id }, req.body, { new: true }, function (err, book) {
 		if (err) {
 			res.send(err);
 		} else {
@@ -45,7 +47,7 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
-	Book.remove({ _id: req.params.id }, function (err, book) {
+	Book.remove({ uuid: req.headers.uuid, _id: req.params.id }, function (err, book) {
 		if (err) {
 			res.send(err);
 		} else {
