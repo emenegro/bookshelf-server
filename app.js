@@ -1,8 +1,6 @@
-const http = require('http');
 const express = require('express'),
       app = express()
 const db = require('mongoose');
-const books = require('./controllers/books');
 const booksRoutes = require('./routes/books');
 const searchRoutes = require('./routes/search');
 const bodyParser = require('body-parser');

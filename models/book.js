@@ -3,8 +3,8 @@ var mongoose = require('mongoose'),
 
 var bookSchema = new Schema({
     title: { type: String },
-    author: { type: String },
-    coverImage: { type: String },
+    authors: { type: [String] },
+    coverImageUrl: { type: String },
     description: { type: String },
     publisher: { type: String },
     publishedDate: { type: String },
