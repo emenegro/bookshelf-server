@@ -9,7 +9,8 @@ var bookSchema = new Schema({
     description: { type: String },
     publisher: { type: String },
     publishedDate: { type: String },
-    pageCount: { type: Number }
+    pageCount: { type: Number },
+    isRead: { type: Boolean, default: false }
 });
 
 mongoose.model('Book', bookSchema);
