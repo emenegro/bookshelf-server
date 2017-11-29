@@ -5,6 +5,10 @@
   "main": "app.js",
   "author": "Mario Negro",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://bitbucket.org/emenegro/books-list-server.git"
+  },
   "dependencies": {
     "body-parser": "^1.18.2",
     "express": "^4.16.2",

@@ -7,7 +7,6 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan')
 const HOST = '127.0.0.1';
 const PORT = 8080;
-const MONGO_PORT = 27017;
 
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -17,9 +16,10 @@ app.use(uuidChecker);
 booksRoutes(app);
 searchRoutes(app);
 
-db.connect(`mongodb://${HOST}:${MONGO_PORT}/books`, { useMongoClient: true }, function (err, db) {
+db.connect(`mongodb://mongo/books`, { useMongoClient: true }, function (err, db) {
   if (err) {
     console.log('ERROR: connecting to Database. ' + err);
+    process.exit(1);
   }
   app.listen(PORT, function () {
     console.log(`Server running on http://${HOST}:${PORT}`);
