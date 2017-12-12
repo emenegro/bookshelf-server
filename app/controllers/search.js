@@ -4,30 +4,39 @@ const objectMapper = require('object-mapper');
 module.exports.search = (req, res) => {
     let url = 'https://www.googleapis.com/books/v1/volumes?q=' + req.query.q;
     https.get(url, (gbooksRes) => {
-        const { statusCode } = gbooksRes;
         if (gbooksRes.error) {
-            res.statusCode = statusCode;
-            res.error = gbooksRes.error;
-            res.end();
+            handleGBooksError(gbooksRes, res);
         } else {
-            let rawData = '';
-            gbooksRes.on('data', (chunk) => {
-                rawData += chunk;
-            });
-            gbooksRes.on('end', () => {
-                try {
-                    const parsedData = JSON.parse(rawData);
-                    const list = mapList(parsedData);
-                    res.send(list);
-                } catch (e) {
-                    res.error = e;
-                }
-            });
+            handleGBooksSuccess(gbooksRes, res);
         }
     }).on('error', (e) => {
         res.error = e;
     });
 };
+
+function handleGBooksError(gbooksRes, res) {
+    const { statusCode } = gbooksRes;
+    res.statusCode = statusCode;
+    res.error = gbooksRes.error;
+    res.end();
+}
+
+function handleGBooksSuccess(gbooksRes, res) {
+    let rawData = '';
+    gbooksRes.on('data', (chunk) => {
+        rawData += chunk;
+    });
+    gbooksRes.on('end', () => {
+        try {
+            const parsedData = JSON.parse(rawData);
+            const list = mapList(parsedData);
+            res.send(list);
+        } catch (e) {
+            res.error = e;
+            res.end();
+        }
+    });
+}
 
 function mapList(json) {
     var list = []
