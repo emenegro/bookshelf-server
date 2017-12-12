@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/emenegro/bookshelf-server.svg?branch=master)](https://travis-ci.org/emenegro/bookshelf-server)
+
 Example app to learn Node.js and MongoDB. A very simple REST API to manage a bookshelf.
 
 ## Endpoints
