@@ -1,13 +1,13 @@
 {
-  "name": "books-list-server",
+  "name": "bookshelf-server",
   "version": "1.0.0",
-  "description": "Books List Server",
+  "description": "Bookshelf Server",
   "main": "app.js",
   "author": "Mario Negro",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://bitbucket.org/emenegro/books-list-server.git"
+    "url": "https://github.com/emenegro/bookshelf-server.git"
   },
   "scripts": {
     "start": "node app/app.js"
