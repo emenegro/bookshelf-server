@@ -1,0 +1,136 @@
+{
+  "info": {
+    "name": "books-server.paw",
+    "schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+    "version": "v0.0.0"
+  },
+  "item": [
+    {
+      "name": "search",
+      "item": [
+        {
+          "name": "Search books",
+          "description": "Executes a book search against Google Books API.",
+          "request": {
+            "url": "127.0.0.1:8080/search?q=wuthering heights",
+            "method": "GET",
+            "header": [
+              {
+                "key": "uuid",
+                "value": "0000-1111-2222-3333-4444"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"\"\n}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "books",
+      "item": [
+        {
+          "name": "List books",
+          "description": "Lists all the books in the user's collection.",
+          "request": {
+            "url": "127.0.0.1:8080/books",
+            "method": "GET",
+            "header": [
+              {
+                "key": "uuid",
+                "value": "0000-1111-2222-3333-4444"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Add book",
+          "description": "Adds a book to the user's collection. ",
+          "request": {
+            "url": "127.0.0.1:8080/books",
+            "method": "POST",
+            "header": [
+              {
+                "key": "uuid",
+                "value": "0000-1111-2222-3333-4444"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{{bookJSON}}"
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "books/:bookId",
+      "item": [
+        {
+          "name": "Get book",
+          "description": "Gets a book from the user's collection.",
+          "request": {
+            "url": "127.0.0.1:8080/books/:bookId",
+            "method": "GET",
+            "header": [
+              {
+                "key": "uuid",
+                "value": "0000-1111-2222-3333-4444"
+              }
+            ]
+          }
+        },
+        {
+          "name": "Update book",
+          "description": "Updates a book of the user's collection. \nUsed to mark `isRead` flag.",
+          "request": {
+            "url": "127.0.0.1:8080/books/:bookId",
+            "method": "PUT",
+            "header": [
+              {
+                "key": "uuid",
+                "value": "0000-1111-2222-3333-4444"
+              },
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"{\\n  \\\"isRead\\\": true\\n}\"\n}"
+            }
+          }
+        },
+        {
+          "name": "Delete book",
+          "description": "Deletes a book from the user's collection.",
+          "request": {
+            "url": "127.0.0.1:8080/books/:bookId",
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "uuid",
+                "value": "0000-1111-2222-3333-4444"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"type\": \"string\",\n  \"default\": \"\"\n}"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
