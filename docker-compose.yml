@@ -1,7 +1,7 @@
 version: "2"
 services:
   app:
-    container_name: books-server
+    container_name: bookshelf-server
     restart: "no"
     build: .
     ports:
