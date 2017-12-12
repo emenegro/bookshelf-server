@@ -1,6 +1,4 @@
-Example app to learn Node.js and MongoDB. 
-
-This app is a very simple REST API to manage a bookshelf.
+Example app to learn Node.js and MongoDB. A very simple REST API to manage a bookshelf.
 
 ## Endpoints
 
@@ -71,4 +69,3 @@ Use **docker-compose** in order to install the whole app and its dependencies.
 Run `docker-compose up` in the project's root folder and, if everything is OK you could test the API in `http://127.0.0.1:8080`.
 
 Inside `etc/` folder there are both [Paw](https://paw.cloud) and [Postman](https://www.getpostman.com) collections with some prefilled data to play with.
-
