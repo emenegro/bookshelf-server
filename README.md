@@ -2,11 +2,20 @@
 
 Example app to learn Node.js and MongoDB. A very simple REST API to manage a bookshelf.
 
+## Authentication
+
+In this first version there is no authentication so in order to allow several users to store their bookshelf each request has to be run passing a HTTP header named **`uuid`** of type `String`. The value passed to this header is irrelevant as long as it is always the same; for example, in a mobile app this value could be the device id.
+
+Each database registry is stored with the UUID passed when creating it, and it will be compared with the provided one when an operation is performed.
+
 ## Endpoints
 
->In order to allow several users to store their bookshelf each request has to be run passing a HTTP header named **`uuid`** of type `String`. The value passed to this header is irrelevant as long as it is always the same; for example, in a mobile app this value could be the device id.
->
->Each database registry is stored with the UUID passed when creating it, and it will be compared with the provided one when an operation is performed.
+* [GET search](#search)
+* [GET books](#list-books)
+* [POST books](#create-book)
+* [GET books/[id]](#get-book)
+* [PUT books/[id]](#update-book)
+* [DELETE books/[id]](#delete-book)
 
 ### Search
 Executes a search against Google Books API and returns the results.
