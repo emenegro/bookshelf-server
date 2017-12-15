@@ -80,3 +80,7 @@ Use **docker-compose** in order to install the whole app and its dependencies.
 Run `docker-compose up` in the project's root folder and, if everything is OK you could test the API in `http://127.0.0.1:8080`.
 
 Inside `etc/` folder there are both [Paw](https://paw.cloud) and [Postman](https://www.getpostman.com) collections with some prefilled data to play with.
+
+## ToDo
+
+* Add proper user authentication to get rid of UUID header.
