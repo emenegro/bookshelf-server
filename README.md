@@ -8,6 +8,8 @@ In this first version there is no authentication so in order to allow several us
 
 Each database registry is stored with the UUID passed when creating it, and it will be compared with the provided one when an operation is performed.
 
+**NOTE**: this is an exercise, not a production-ready code, please **don't** use this kind of approach in your production code.
+
 ## Endpoints
 
 * [GET search](#search)
