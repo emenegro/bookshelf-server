@@ -3,7 +3,7 @@ var db = require('mongoose');
 var Book = db.model('Book');
 
 module.exports.list = (req, res) => {
-	Book.find({ uuid: req.headers.uuid }, function (err, books) {
+	Book.find(function (err, books) {
 		if (err) {
 			fillError500Res(res, "Error listing books");
 		} else {
@@ -13,7 +13,7 @@ module.exports.list = (req, res) => {
 };
 
 module.exports.find = (req, res) => {
-	Book.findById({ uuid: req.headers.uuid, _id: req.params.id }, function (err, book) {
+	Book.findById({ _id: req.params.id }, function (err, book) {
 		if (err) {
 			fillError500Res(res, "Error finding book");
 		} else {
@@ -24,7 +24,6 @@ module.exports.find = (req, res) => {
 
 module.exports.create = (req, res) => {
 	var body = req.body;
-	body['uuid'] = req.headers.uuid;
 	var newBook = new Book(body);
 	newBook.save(function (err, book) {
 		if (err) {
@@ -36,7 +35,7 @@ module.exports.create = (req, res) => {
 };
 
 module.exports.update = (req, res) => {
-	Book.findOneAndUpdate({ uuid: req.headers.uuid, _id: req.params.id }, req.body, { new: true }, function (err, book) {
+	Book.findOneAndUpdate({ _id: req.params.id }, req.body, { new: true }, function (err, book) {
 		if (err) {
 			fillError500Res(res, "Error updating book");
 		} else {
@@ -46,7 +45,7 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
-	Book.remove({ uuid: req.headers.uuid, _id: req.params.id }, function (err, book) {
+	Book.remove({ _id: req.params.id }, function (err, book) {
 		if (err) {
 			fillError500Res(res, "Error deleting book");
 		} else {

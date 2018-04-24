@@ -11,7 +11,6 @@ const PORT = 8080;
 app.use(morgan('dev'));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(uuidChecker);
 
 booksRoutes(app);
 searchRoutes(app);
@@ -25,13 +24,3 @@ db.connect(`mongodb://mongo/books`, { useMongoClient: true }, function (err, db)
     console.log(`Server running on http://${HOST}:${PORT}`);
   });
 });
-
-// UUID checker middleware
-function uuidChecker(req, res, next) {
-  if (req.headers.uuid) {
-    next()
-  } else {
-    res.statusCode = 400;
-    res.end('Missing "uuid" header in request');
-  }
-}

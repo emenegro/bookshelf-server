@@ -2,7 +2,7 @@ version: "2"
 services:
   app:
     container_name: bookshelf-server
-    restart: "no"
+    restart: on-failure
     build: .
     ports:
       - "8080:8080"
