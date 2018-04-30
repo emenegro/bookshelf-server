@@ -45,11 +45,14 @@ module.exports.update = (req, res) => {
 };
 
 module.exports.delete = (req, res) => {
-	Book.remove({ _id: req.params.id }, function (err, book) {
+	Book.findOneAndRemove({ _id: req.params.id }, function (err, book) {
 		if (err) {
 			fillError500Res(res, "Error deleting book");
 		} else {
-			res.end()
+			book = book.toObject();
+			book._id = '';
+			book.isRead = false;
+			fillBookRes(res, book);
 		}
 	});
 };
