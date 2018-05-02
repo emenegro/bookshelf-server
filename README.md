@@ -69,7 +69,7 @@ curl -X DELETE "http://127.0.0.1:8080/books/[BOOK_ID]" \
 
 Use **docker-compose** in order to install the whole app and its dependencies.
 
-Run `docker-compose up` in the project's root folder and, if everything is OK you could test the API in `http://127.0.0.1:8080`.
+Run `docker-compose build` and `docker-compose up -d` in the project's root folder and, if everything is OK you could test the API in `http://127.0.0.1:8080`.
 
 Inside `etc/` folder there are both [Paw](https://paw.cloud) and [Postman](https://www.getpostman.com) collections with some prefilled data to play with.
 
